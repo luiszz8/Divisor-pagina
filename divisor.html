@@ -68,7 +68,8 @@
     <script>
         function dividirTexto() {
             const textoOriginal = document.getElementById('texto').value;
-            const palabras = textoOriginal.split(/\s+/);
+            const textoLimpio = removeSpecificCharacters(textoOriginal)
+            const palabras = textoLimpio.split(/\s+/);
             const longitudTercio = Math.ceil(palabras.length / 3);
 
             const parte1 = palabras.slice(0, longitudTercio).join(' ');
@@ -89,6 +90,14 @@
             window.getSelection().removeAllRanges();
             alert('¡Texto copiado al portapapeles!');
         }
+
+        function removeSpecificCharacters(str) {
+    // Define los caracteres específicos que deseas eliminar
+    const charsToRemove = /[×□●○△]/g;
+    
+    // Usa la expresión regular para reemplazar los caracteres especificados con una cadena vacía
+    return str.replace(charsToRemove, '');
+}
     </script>
 </body>
 </html>
